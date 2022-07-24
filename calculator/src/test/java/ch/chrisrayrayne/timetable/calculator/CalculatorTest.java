@@ -1,4 +1,4 @@
-package ch.chrisrayrayne.schedule;
+package ch.chrisrayrayne.timetable.calculator;
 
 import org.junit.jupiter.api.Test;
 

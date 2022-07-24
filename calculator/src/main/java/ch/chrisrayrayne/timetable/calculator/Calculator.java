@@ -1,4 +1,4 @@
-package ch.chrisrayrayne.schedule;
+package ch.chrisrayrayne.timetable.calculator;
 
 import java.util.List;
 

@@ -1,9 +1,8 @@
-package ch.chrisrayrayne.schedule;
+package ch.chrisrayrayne.timetable.calculator;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
