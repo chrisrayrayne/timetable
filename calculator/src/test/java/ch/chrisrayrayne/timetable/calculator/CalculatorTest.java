@@ -16,7 +16,7 @@ public class CalculatorTest {
         var result = Calculator.calculate(template, List.of(student));
         assertAll(
                 () -> assertTrue(result.isSuccess()),
-                () -> assertEquals(1, result.getSlots().size())
+                () -> assertEquals(1, result.getSlots().stream().filter(s -> s.getStudents().size() == 1).toList().size())
         );
     }
 
@@ -26,8 +26,8 @@ public class CalculatorTest {
         var template = new Template(List.of(new Slot(MONDAY, 100, 300)));
         var result = Calculator.calculate(template, List.of(student));
         assertAll(
-                () -> assertTrue(result.isSuccess()),
-                () -> assertEquals(1, result.getSlots().size())
+                () -> assertFalse(result.isSuccess()),
+                () -> assertEquals(0, result.getSlots().stream().filter(s -> s.getStudents().size() == 1).toList().size())
         );
     }
 
@@ -39,7 +39,7 @@ public class CalculatorTest {
         var result = Calculator.calculate(template, List.of(student1, student2));
         assertAll(
                 () -> assertTrue(result.isSuccess()),
-                () -> assertEquals(2, result.getSlots().size())
+                () -> assertEquals(2, result.getSlots().stream().filter(s -> s.getStudents().size() == 1).toList().size())
         );
     }
 
@@ -51,7 +51,7 @@ public class CalculatorTest {
         var result = Calculator.calculate(template, List.of(student1, student2));
         assertAll(
                 () -> assertFalse(result.isSuccess()),
-                () -> assertEquals(1, result.getSlots().size())
+                () -> assertEquals(1, result.getSlots().stream().filter(s -> s.getStudents().size() == 1).toList().size())
         );
     }
 
@@ -62,8 +62,8 @@ public class CalculatorTest {
         var template = new Template(List.of(new Slot(MONDAY, 100, 300)));
         var result = Calculator.calculate(template, List.of(student1, student2));
         assertAll(
-                () -> assertFalse(result.isSuccess()),
-                () -> assertEquals(2, result.getSlots().size())
+                () -> assertTrue(result.isSuccess()),
+                () -> assertEquals(2, result.getSlots().stream().filter(s -> s.getStudents().size() == 1).toList().size())
         );
     }
 }
